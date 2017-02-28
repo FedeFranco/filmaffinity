@@ -12,7 +12,7 @@ use Yii;
  *
  * @property Participaciones[] $participaciones
  */
-class Participantes extends \yii\db\ActiveRecord
+class Participante extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
@@ -49,6 +49,6 @@ class Participantes extends \yii\db\ActiveRecord
      */
     public function getParticipaciones()
     {
-        return $this->hasMany(Participaciones::className(), ['id_participante' => 'id'])->inverseOf('idParticipante');
+        return $this->hasMany(Participacion::className(), ['id_participante' => 'id'])->inverseOf('idParticipante');
     }
 }

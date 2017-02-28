@@ -2,7 +2,12 @@
 
 namespace app\models;
 
+use app\models\Pelicula;
+use app\models\Genero;
+use app\models\Rol;
+use app\models\Participante;
 use Yii;
+
 
 /**
  * This is the model class for table "participaciones".
@@ -32,10 +37,11 @@ class Participacion extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_participante', 'id_rol', 'id_pelicula'], 'integer'],
-            [['id_participante'], 'exist', 'skipOnError' => true, 'targetClass' => Participantes::className(), 'targetAttribute' => ['id_participante' => 'id']],
-            [['id_pelicula'], 'exist', 'skipOnError' => true, 'targetClass' => Peliculas::className(), 'targetAttribute' => ['id_pelicula' => 'id']],
-            [['id_rol'], 'exist', 'skipOnError' => true, 'targetClass' => Roles::className(), 'targetAttribute' => ['id_rol' => 'id']],
+            [['id_participante', 'id_rol', 'id_pelicula','id_genero'], 'integer'],
+            [['id_participante'], 'exist', 'skipOnError' => true, 'targetClass' => Participante::className(), 'targetAttribute' => ['id_participante' => 'id']],
+            [['id_pelicula'], 'exist', 'skipOnError' => true, 'targetClass' => Pelicula::className(), 'targetAttribute' => ['id_pelicula' => 'id']],
+            [['id_rol'], 'exist', 'skipOnError' => true, 'targetClass' => Rol::className(), 'targetAttribute' => ['id_rol' => 'id']],
+            [['id_genero'], 'exist', 'skipOnError' => true, 'targetClass' => Genero::className(), 'targetAttribute' => ['id_genero' => 'id']],
         ];
     }
 
@@ -49,6 +55,7 @@ class Participacion extends \yii\db\ActiveRecord
             'id_participante' => 'Id Participante',
             'id_rol' => 'Id Rol',
             'id_pelicula' => 'Id Pelicula',
+            'id_genero' => 'Id Genero',
         ];
     }
 
@@ -65,7 +72,7 @@ class Participacion extends \yii\db\ActiveRecord
      */
     public function getIdPelicula()
     {
-        return $this->hasOne(Peliculas::className(), ['id' => 'id_pelicula'])->inverseOf('participacions');
+        return $this->hasOne(Pelicula::className(), ['id' => 'id_pelicula'])->inverseOf('participaciones');
     }
 
     /**
@@ -73,6 +80,11 @@ class Participacion extends \yii\db\ActiveRecord
      */
     public function getIdRol()
     {
-        return $this->hasOne(Roles::className(), ['id' => 'id_rol'])->inverseOf('participacions');
+        return $this->hasOne(Rol::className(), ['id' => 'id_rol'])->inverseOf('participaciones');
+    }
+
+    public function getIdGenero()
+    {
+        return $this->hasOne(Genero::className(), ['id' => 'id_genero'])->inverseOf('participaciones');
     }
 }

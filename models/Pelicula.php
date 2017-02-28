@@ -52,6 +52,6 @@ class Pelicula extends \yii\db\ActiveRecord
      */
     public function getParticipaciones()
     {
-        return $this->hasMany(Participaciones::className(), ['id_pelicula' => 'id'])->inverseOf('idPelicula');
+        return $this->hasMany(Participacion::className(), ['id_pelicula' => 'id'])->inverseOf('idPelicula');
     }
 }

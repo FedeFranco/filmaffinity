@@ -41,4 +41,9 @@ class Genero extends \yii\db\ActiveRecord
             'nombre_genero' => 'Nombre Genero',
         ];
     }
+
+    public function getParticipaciones()
+    {
+        return $this->hasMany(Participacion::className(), ['id_genero' => 'id'])->inverseOf('idGenero');
+    }
 }
