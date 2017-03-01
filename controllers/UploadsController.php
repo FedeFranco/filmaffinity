@@ -6,6 +6,7 @@ use app\models\UploadForm;
 use app\models\Upload;
 use app\models\Genero;
 use yii\web\UploadedFile;
+use app\helpers\Mensaje;
 use yii\data\ActiveDataProvider;
 use Yii;
 
@@ -27,8 +28,9 @@ class UploadsController extends \yii\web\Controller
 
                 $generos = explode(',',$model->genero);
 
-                if ($uplo->subir($model->titulo, $model->descricion,$model->file,$msg)) {
+                if ($uplo->subir($model->titulo, $model->descricion,$model->file,$generos)) {
                     $msg = "<p><strong class='label label-info'>Enhorabuena, subida realizada con éxito</strong></p>";
+                    Mensaje::exito('Guardado REALIZADO con exito');
                 }
 
             }

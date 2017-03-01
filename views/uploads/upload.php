@@ -6,7 +6,7 @@ use yii\web\JsExpression;
 use yii\imagine\Image;
 use app\models\Genero;
 
-$url = Url::to(['uploads/generos']);
+/*$url = Url::to(['uploads/generos']);
 $urlActual = Url::to(['uploads/upload']);
 $js = <<<EOT
     $('#uploadform-genero').keyup(function() {
@@ -18,7 +18,7 @@ $js = <<<EOT
         /*if (!isNaN(q)) {
             return;
         }*/
-        $.ajax({
+        /*$.ajax({
             method: 'GET',
             url: '$url',
             data: {
@@ -30,7 +30,7 @@ $js = <<<EOT
         });
     });
 EOT;
-$this->registerJs($js);
+$this->registerJs($js);*/
 ?>
 
 <?= $msg ?>

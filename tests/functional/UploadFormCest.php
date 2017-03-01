@@ -22,32 +22,15 @@ class UploadFormCest
 
     }
 
-    /*public function openEnviarEntradaPage(\FunctionalTester $I)
+    public function EnviarVacioForm(\FunctionalTester $I)
     {
-        $I->see('Enviar Entrada', 'h1');
+        $I->submitForm('#w0', []);
+        //$I->expectTo('see validations errors');
+        $I->see('Contact', 'h1');
+        $I->see('No has seleccionado ningún archivo');
+        $I->see('Título cannot be blank.');
+        $I->see('Genero cannot be blank.');
+        $I->see('Descripción cannot be blank.');
     }
-    public function enviarEntradaExitosamente(\FunctionalTester $I)
-    {
-        $I->submitForm('#form-enviar', [
-            'Entrada[url]' => 'http://github.com',
-            'Entrada[titulo]' => 'awdadwa',
-            'Entrada[texto]' => 'waifjoaiwjfa',
-            'Entrada[categoria_id]' => 1,
-            'Entrada[nombre]' => 'hola, pepe'
-        ]);
-        $I->dontSeeElement('#form-enviar');
-        $I->see('awdadwa');
-        // $I->amOnPage(['entradas%2Fview&id=1']);
-    }
-    public function enviarEntradaVacia(\FunctionalTester $I)
-    {
-        $I->submitForm('#form-enviar', []);
-        $I->amOnPage(['entradas/create']);
-        $I->expectTo('see validations errors');
-        $I->see('Url no puede estar vacío.');
-        $I->see('Titulo de la entrada no puede estar vacío.');
-        $I->see('Descripción de la entrada no puede estar vacío.');
-        $I->see('Categoria no puede estar vacío.');
-        $I->see('Etiquetas no puede estar vacío.');
-    }*/
+
 }
