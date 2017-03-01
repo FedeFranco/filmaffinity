@@ -12,7 +12,7 @@ use app\models\Genero;
     'id' => 'generoGrid',
     'dataProvider' => $dataProvider,
     'columns' => [
-        'Genero',
+        'nombre_genero',
     ],
 
     /*'tableOptions' => [

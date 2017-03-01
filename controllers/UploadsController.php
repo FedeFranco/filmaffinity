@@ -47,7 +47,7 @@ class UploadsController extends \yii\web\Controller
             ],
             'sort' => false,
         ]);
-        return $this->renderAjax('_generos', [
+        return $this->render('_generos', [
             'dataProvider' => $dataProvider,
         ]);
     }
