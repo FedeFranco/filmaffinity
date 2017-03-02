@@ -8,6 +8,9 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Pelicula;
+use yii\data\ActiveDataProvider;
+use app\models\PeliculaSearch;
 
 class SiteController extends Controller
 {
@@ -60,7 +63,17 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $peliculaSearch = new PeliculaSearch();
+        $dataProvider = new ActiveDataProvider([
+               'query' => Pelicula::find()->select('titulo'),
+               'pagination' => [
+                   'pageSize' => 4,
+               ],
+           ]);
+
+        $this->view->title = 'Posts List';
+        return $this->render('index', ['listDataProvider' => $dataProvider,
+                                            'peliculaSearch' => $peliculaSearch]);
     }
 
     /**
